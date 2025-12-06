@@ -4,7 +4,33 @@ Quart is a file format for the compression and archiving of multiple files, with
 
 More information about Quart's workings can be found in the `src/compress.rs` and `src/extract.rs` files.
 
-## Layout
+## How To
+
+### Build
+
+Simply run `cargo build --release` in the root directory after cloning the repository!
+
+### Compress a file
+
+```shell
+quart create archive.q file.txt file2.txt file3.txt
+```
+
+### Compress a directory
+
+```shell
+quart create archive.q files/
+```
+
+### Extract an archive
+
+```shell
+quart extract archive.q
+```
+
+## About Quart
+
+### Layout
 
 For all values in Quart, if they are said to be represented by `varint`, then they will be stored as a minimum of one byte, this byte represents the size (in bytes) of the actual value, if the length is over 0, there will always be at least one other byte following it.
 
@@ -29,7 +55,7 @@ All of Quart uses little endian.
 └─────────────────────┘
 ```
 
-### Archive Header
+#### Archive Header
 
 ```ascii
 ┌────────────────────────────┐
@@ -38,7 +64,7 @@ All of Quart uses little endian.
 └────────────────────────────┘
 ```
 
-### Central Directory
+#### Central Directory
 
 ```ascii
 ┌──────────────────────────────────────────────────────────┐
@@ -72,7 +98,7 @@ All of Quart uses little endian.
 └──────────────────────────────────────────────────────────┘
 ```
 
-### End Record
+#### End Record
 
 ```ascii
 ┌──────────────────────────────────────────────┐
