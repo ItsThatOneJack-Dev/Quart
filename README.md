@@ -31,13 +31,16 @@ All of Quart uses little endian.
 
 ### Archive Header
 
+```ascii
 ┌────────────────────────────┐
 │ Magic:   "QUART" (5 bytes) │ ← Always constant
 │ Version: u16     (2 bytes) │ ← ID of the format version
 └────────────────────────────┘
+```
 
 ### Central Directory
 
+```ascii
 ┌──────────────────────────────────────────────────────────┐
 │ Directory Entry 1                                        │
 │ ┌──────────────────────────────────────────────────────┐ │
@@ -67,9 +70,11 @@ All of Quart uses little endian.
 ├──────────────────────────────────────────────────────────┤
 │ ...                                                      │
 └──────────────────────────────────────────────────────────┘
+```
 
 ### End Record
 
+```ascii
 ┌──────────────────────────────────────────────┐
 │ Central Dir Offset:      u64 (byte offset)   │
 │ Central Dir Comp Size:   u32 (compressed)    │
@@ -77,6 +82,7 @@ All of Quart uses little endian.
 │ Entry Count:             u32 (# of files)    │
 │ Compression Algo:        u8  (for directory) │
 └──────────────────────────────────────────────┘
+```
 
 ## License
 
